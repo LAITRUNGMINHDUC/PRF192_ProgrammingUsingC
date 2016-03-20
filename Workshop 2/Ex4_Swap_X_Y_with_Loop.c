@@ -18,5 +18,8 @@ int main()
 		printf("Y = %d\n", y);
 		printf("========================= \n");
 	} while (x != 0 && y != 0);
+	
+	getchar();
+	return 0;
 }
 

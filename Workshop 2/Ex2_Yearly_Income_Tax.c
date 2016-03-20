@@ -50,5 +50,6 @@ int main()
 	printf("Taxable income: %d \n", ti);
 	printf("Income tax: %d\n", incomeTax);
 
+	getchar();
 	return 0;
 }

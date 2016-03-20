@@ -26,4 +26,6 @@ int main()
 	{
 		printf("%c : %d, %o, %X\n", i, i, i, i);
 	}
+	getchar(); 
+	return 0;
 }

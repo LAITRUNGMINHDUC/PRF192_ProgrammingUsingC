@@ -39,5 +39,6 @@ int main()
 	printf("Consonants times : %d \n", nConsonants);
 	printf("Others times : %d \n", nOthers);
 
+	getchar();
 	return 0;
 }

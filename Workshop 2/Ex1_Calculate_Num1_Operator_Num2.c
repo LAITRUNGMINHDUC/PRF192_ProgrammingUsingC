@@ -37,5 +37,6 @@ int main()
 	}
 	
 	printf("Result = %lf", result);
+	getchar();
 	return;
 }

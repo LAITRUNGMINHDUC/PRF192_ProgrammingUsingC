@@ -15,5 +15,6 @@ int main()
 
 	printf("Sum = %d", Sum);
 
+	getchar();
 	return 0;
 }
