@@ -33,6 +33,6 @@ int main()
 	printf("N = ");scanf("%d", &n);
 	printMinMaxremains(n);
 
-	getch();
+	getchar(); getchar();
 	return 0;
 }

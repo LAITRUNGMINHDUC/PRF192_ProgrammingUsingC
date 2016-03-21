@@ -24,6 +24,6 @@ int main()
 
 	result = factorial(n);
 	printf("Factorial = %lf", result);
-
+	getchar(); getchar();
 	return 0;
 }
