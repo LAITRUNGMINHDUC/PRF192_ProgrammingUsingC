@@ -5,6 +5,16 @@
 double Array[MAX];
 int n = 0; int i;
 
+int checkArray(double *array, int *n)
+{
+	if (*n == 0) 
+	{
+		printf("No elements \n");
+		return 0;	
+	}
+	return 1;
+}
+
 void printArray()
 {
 	for (i=0; i<n; i++)
@@ -16,6 +26,15 @@ void printArray()
 void printRange(double minVal, double maxVal)
 {
 	printf("Value from %lf to %lf : \n", minVal, maxVal);
+	
+	if (minVal > maxVal) 
+	{
+		double Temp;
+		minVal = Temp;
+		minVal = maxVal;
+		maxVal = Temp;
+	}
+	
 	for (i=0; i<n; i++)
 	{
 		if (Array[i] <= maxVal && Array[i]>=minVal)
@@ -24,8 +43,8 @@ void printRange(double minVal, double maxVal)
 		}
 	}
 }
-
-void Sort(double *array, int n)
+/*
+void pointerSort(double *array, int n)
 {
 	int *i, *j, temp;
 	for (i = array; i < array + n; i++ )
@@ -41,6 +60,29 @@ void Sort(double *array, int n)
 		}
 	}
 }
+*/
+
+void Sort(double *array, int n)
+{
+	int i, j;
+	double *temp;
+	
+	double **TempArray = (double**) calloc(n, sizeof(double*));
+		for (i=0; i<n; i++) TempArray[i] = &array[i];
+	
+	for (i=0; i<n-1; i++)
+		for (j=n-1; j>i; j--)
+		if (*TempArray[j] > *TempArray[j-1])
+		{
+			temp = TempArray[j];
+			TempArray[j] = TempArray[j-1];
+			TempArray[j-1] = temp;
+		}
+	
+	for (i=0; i<n; i++) printf("%lf ; ", *TempArray[i]);
+	printf("\n");
+	free(TempArray);
+}
 
 void searchValue(double x)
 {
@@ -53,7 +95,7 @@ void searchValue(double x)
 			check = 1;
 		}
 	}
-	check==0 ? printf("Value does not exist"):printf("");
+	check==0 ? printf("Value does not exist\n"):printf("\n");
 }
 
 void addValue(double x)
@@ -86,27 +128,32 @@ void Option1()
 
 void Option2()
 {
-	double x;
-	printf("Search: "); scanf("%lf", &x);
-	searchValue(x);
+	if (checkArray(Array, &n))
+	{
+		double x;
+		printf("Search: "); scanf("%lf", &x);
+		searchValue(x);	
+	}	
 }
 
 void Option3()
 {
-	printArray();
+	if (checkArray(Array, &n))	printArray();
 }
 
 void Option4()
 {
-	double minVal, maxVal;
-	printf("Type Range: "); scanf("%lf%lf", &minVal, &maxVal);
-	printRange(minVal, maxVal);
+	if (checkArray(Array, &n))
+	{
+		double minVal, maxVal;
+		printf("Type Range: "); scanf("%lf%lf", &minVal, &maxVal);
+		printRange(minVal, maxVal);
+	}
 }
 
 void Option5()
 {
-	Sort(&Array, n);
-	printArray();
+	if (checkArray(Array, &n)) Sort(Array, n);	
 }
 
 int main()
