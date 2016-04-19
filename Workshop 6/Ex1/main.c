@@ -4,13 +4,13 @@
 #define MAX 15
 #define MaxRule 10
 
-char Input[MAX];
+/* char Input[MAX]; */
 
-void inputISBN()
+void inputISBN(char *Input)
 {
 	printf("ISBN: "); gets(Input);		
 }
-int validateISBN()
+int validateISBN(char *Input)
 {
 	int i; int sum = 0; int temp;
 	
@@ -29,8 +29,9 @@ int validateISBN()
 }
 int main()
 {
-	inputISBN();
-	validateISBN() ? printf("Valid ISBN"):printf("InValid ISBN");
+	char Input[MAX];	
+	inputISBN(Input);
+	validateISBN(Input) ? printf("Valid ISBN"):printf("InValid ISBN");
 	printf("\n");
 	system("pause");
 }	

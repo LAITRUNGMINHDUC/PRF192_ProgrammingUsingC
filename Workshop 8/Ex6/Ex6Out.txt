@@ -1,0 +1,3 @@
+Ginny;  Vietnam; 10 
+Yoona;  Korea; 9 
+Harry;  UK; 1 

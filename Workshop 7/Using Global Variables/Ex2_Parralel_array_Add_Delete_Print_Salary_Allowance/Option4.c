@@ -2,10 +2,7 @@ void SortDes()
 {
 	int i,j;
 	struct MyData Temp;	
-	/* If you start an array from index 1
-	You must let i =1 ; i < N (not N-1)
-	and j = N (not N-1)
-	*/
+
 	for (i=1; i<N; i++)
 	{
 		for (j=N; j>i; j--)

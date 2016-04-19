@@ -1,29 +1,23 @@
-void addData(struct SoftDrink Data)
+void inputData(Drinks *MyDrinks, int *n);
+void Option1(Drinks *MyDrinks, int *n);
+
+void Option1(Drinks *MyDrinks, int *n)
 {
-	Database[N] = Data;
-	N = N + 1;
+	fflush(stdin);
+	inputData(MyDrinks, n);
 }
 
-void inputData()
+void inputData(Drinks *MyDrinks, int *n)
 {
-	struct SoftDrink Data;
-	printf("=====================\n");
+	Drinks Data;
+	printf("\nOption 1\n");
 	printf("Add new soft drink \n");
 	printf("Name : "); gets(Data.name); 
 	printf("Make : "); gets(Data.make); 
 	printf("Volume : "); scanf("%d", &Data.volume); 
 	printf("Price : "); scanf("%d", &Data.price); 
 	printf("Duration : "); scanf("%d", &Data.duration); 
-	addData(Data); 
-	getchar();
-}
 
-
-void Option1()
-{
-	int i;
-	for (i=0; i<2; i++)
-	{
-		inputData();	
-	}
+	MyDrinks[*n] = Data;
+	*n = *n + 1;
 }

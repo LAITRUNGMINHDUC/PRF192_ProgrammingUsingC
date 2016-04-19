@@ -40,17 +40,16 @@ int main()
 	do
 	{
 		choose = Menu();
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
+		switch(choose)
+		{
+			case 1: Option1(); break;
+			case 2: Option2(); break;
+			case 3: Option3(); break;
+			case 4: Option4(); break;
+			case 5: exit(1);						
+		}
 	}
-	while (choose < 5);
-	Option1();
-	Option2();
-	Option3();
-	Option4();
+	while (choose < 5);	
 }
 
 

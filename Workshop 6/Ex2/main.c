@@ -2,12 +2,11 @@
 #include <stdlib.h>
 #define MAX 100
 
-double Array[MAX];
-int n = 0; int i;
+int i;
 
-int checkArray(double *array, int *n)
+int checkArray(double *array, int n)
 {
-	if (*n == 0) 
+	if (n == 0) 
 	{
 		printf("No elements \n");
 		return 0;	
@@ -15,7 +14,7 @@ int checkArray(double *array, int *n)
 	return 1;
 }
 
-void printArray()
+void printArray(double *Array, int n)
 {
 	for (i=0; i<n; i++)
 	{
@@ -23,7 +22,7 @@ void printArray()
 	}
 }
 
-void printRange(double minVal, double maxVal)
+void printRange(double minVal, double maxVal, double *Array, int n)
 {
 	printf("Value from %lf to %lf : \n", minVal, maxVal);
 	
@@ -84,7 +83,7 @@ void Sort(double *array, int n)
 	free(TempArray);
 }
 
-void searchValue(double x)
+void searchValue(double x, double *Array, int n)
 {
 	int i; int check = 0;
 	for (i=0; i<n; i++)
@@ -98,12 +97,16 @@ void searchValue(double x)
 	check==0 ? printf("Value does not exist\n"):printf("\n");
 }
 
-void addValue(double x)
+void addValue(double x, double *Array, int *n)
 {
 	do
 	{
-		if (x!=0) Array[n++]=x;
-	} while (x==0 || n>MAX);
+		if (x!=0) 
+		{
+			Array[*n]=x;
+			*n = *n + 1;	
+		}
+	} while (x==0 || *n>MAX);
 }
 
 int Menu()
@@ -120,55 +123,57 @@ int Menu()
 	return choice;	
 }
 
-void Option1()
+void Option1(double *Array, int *n)
 {
 	double x; printf("Value: "); scanf("%lf", &x);
-	addValue(x);
+	addValue(x, Array, n);
 }
 
-void Option2()
+void Option2(double *Array, int n)
 {
-	if (checkArray(Array, &n))
+	if (checkArray(Array, n))
 	{
 		double x;
 		printf("Search: "); scanf("%lf", &x);
-		searchValue(x);	
+		searchValue(x, Array, n);	
 	}	
 }
 
-void Option3()
+void Option3(double *Array, int n)
 {
-	if (checkArray(Array, &n))	printArray();
+	if (checkArray(Array, n))	printArray(Array, n);
 }
 
-void Option4()
+void Option4(double *Array, int n)
 {
-	if (checkArray(Array, &n))
+	if (checkArray(Array, n))
 	{
 		double minVal, maxVal;
 		printf("Type Range: "); scanf("%lf%lf", &minVal, &maxVal);
-		printRange(minVal, maxVal);
+		printRange(minVal, maxVal, Array, n);
 	}
 }
 
-void Option5()
+void Option5(double *Array, int n)
 {
-	if (checkArray(Array, &n)) Sort(Array, n);	
+	if (checkArray(Array, n)) Sort(Array, n);	
 }
 
 int main()
 {
-	int choice;
+	int choice; int n = 0; 
+	double Array[MAX];
+
 	do
 	{
 		choice = Menu();
 		switch (choice)
 		{
-			case 1: Option1(); break;
-			case 2: Option2(); break;
-			case 3: Option3(); break;
-			case 4: Option4(); break;
-			case 5: Option5(); break;
+			case 1: Option1(Array, &n); break;
+			case 2: Option2(Array, n); break;
+			case 3: Option3(Array, n); break;
+			case 4: Option4(Array, n); break;
+			case 5: Option5(Array, n); break;
 			default: exit(1);
 		}
 	} while (1);	

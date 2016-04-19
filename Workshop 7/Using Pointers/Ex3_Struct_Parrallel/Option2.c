@@ -1,19 +1,24 @@
-void findMake_n_Print(char Keyword[20])
+int searchByMake(char *Make, Drinks *MyDrinks, int n)
 {
-	int i;
-	for (i = 0; i <= N; i++)
+	int i = 0; int isExist = 0;
+	for (i; i<n; i++)
 	{
-		if (strcmp(Database[i].make, Keyword) == 0)
+		if (strcmp(MyDrinks[i].make, Make) == 0) 
 		{
-			printData(i);
+			printTemplate(MyDrinks, i);
+			isExist = 1;
 		}
 	}
+	return isExist;
 }
 
-void Option2()
+void Option2(Drinks *MyDrinks, int n)
 {
-	char Make[20];
-	printf("Search Make = "); gets(Make); printf("\n");
+	char Make[20]; int isExist;
+	fflush(stdin);
+	printf("\n Option 2 \n");
+	printf("Search by Make = "); gets(Make); printf("\n");
 	printf("Result : \n");
-	findMake_n_Print(Make);
+	isExist = searchByMake(Make, MyDrinks, n);
+	if (isExist==0) printf("No result \n");
 }
